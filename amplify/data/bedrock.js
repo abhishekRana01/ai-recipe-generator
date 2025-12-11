@@ -28,9 +28,24 @@ export function request(ctx) {
 }
 
 export function response(ctx) {
-  const parsedBody = JSON.parse(ctx.result.body);
-  
-  return {
-    body: parsedBody.output.message.content[0].text
-  };
+  try {
+    const parsedBody = JSON.parse(ctx.result.body);
+    
+    if (parsedBody && parsedBody.output && parsedBody.output.message && parsedBody.output.message.content && parsedBody.output.message.content.length > 0) {
+      return {
+        body: parsedBody.output.message.content[0].text,
+        error: null
+      };
+    } else {
+      return {
+        body: JSON.stringify(ctx.result),
+        error: "Unexpected response structure from Bedrock"
+      };
+    }
+  } catch (e) {
+    return {
+      body: JSON.stringify(ctx.result),
+      error: "Failed to parse response: " + e.toString()
+    };
+  }
 }
