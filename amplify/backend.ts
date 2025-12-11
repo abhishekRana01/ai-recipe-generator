@@ -16,7 +16,7 @@ const bedrockDataSource = backend.data.resources.graphqlApi.addHttpDataSource(
       signingRegion: "us-east-1",
       signingServiceName: "bedrock",
     },
-  }
+  },
 );
 
 bedrockDataSource.grantPrincipal.addToPrincipalPolicy(
@@ -25,6 +25,5 @@ bedrockDataSource.grantPrincipal.addToPrincipalPolicy(
       "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0",
     ],
     actions: ["bedrock:InvokeModel"],
-    
-  })
+  }),
 );
