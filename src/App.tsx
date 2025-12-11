@@ -25,7 +25,7 @@ function App() {
         setResult(data?.body || "No data returned");
       } else {
         console.log(errors);
-        alert("Failed to generate recipe. Please try again.");
+        alert("Failed to generate recipe. Please try again." + JSON.stringify(data));
       }
     } catch (e) {
       alert(`An error occurred: ${e}`);
