@@ -71,3 +71,24 @@ export default defineConfig([
   },
 ])
 ```
+
+# Local setup
+## Bedrock
+1. export `AWS_BEARER_TOKEN_BEDROCK=`
+2. Curl to test bedrock on local
+```
+curl -X POST "https://bedrock-runtime.us-east-1.amazonaws.com/model/us.anthropic.claude-3-5-haiku-20241022-v1:0/converse" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${AWS_BEARER_TOKEN_BEDROCK}" \
+  -d '{
+    "messages": [
+        {
+            "role": "user",
+            "content": [{"text": "Hello"}]
+        }
+    ]
+  }'
+```
+3. `npm run dev`
+4. `npx ampx sandbox` in a separate terminal to update amplify
+5. `aws sso login` to refresh token, login using sandbox creds

@@ -36,6 +36,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="header-container">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5364559743187727" crossOrigin="anonymous"></script>
         <h1 className="main-header">
           Meet Your Personal
           <br />
