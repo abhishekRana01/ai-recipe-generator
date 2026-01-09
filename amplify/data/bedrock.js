@@ -1,9 +1,12 @@
+// Note: Model ID must match BEDROCK_MODEL_ID in bedrockConfig.ts
+const BEDROCK_MODEL_ID = "us.anthropic.claude-3-5-haiku-20241022-v1:0";
+
 export function request(ctx) {
   const ingredients = ctx.args.ingredients || [];
   const prompt = "Suggest a recipe idea using these ingredients: " + ingredients.join(", ") + ".";
 
   return {
-    resourcePath: "/model/us.anthropic.claude-3-5-haiku-20241022-v1:0/converse",
+    resourcePath: `/model/${BEDROCK_MODEL_ID}/converse`,
     method: "POST",
     params: {
       headers: {
